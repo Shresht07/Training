@@ -15,7 +15,8 @@ while (IsGameOver) {                                                            
    nGuesses++;                                                                            //For each guesses, the number of guesses is incremented
    if (nGuesses > 6) {                                                                    //If the number guesses surpasses the limit of 7, then the game gets over and prints "Sorry, Game over :( " and then the code breaks
       Console.WriteLine ("Sorry, Game over :( "); break;
-   } else if (!typo)                                                                      //Checks whether user enters a string or a integer which exceeds the range [1,100]
+   } 
+   else if (!typo)                                                                      //Checks whether user enters a string or a integer which exceeds the range [1,100]
       Console.WriteLine ("Enter a valid integer within the given range :|");
    if (guessed_number > 102 || guessed_number < 0)
       Console.WriteLine ("Enter a valid integer within the given range...");              //Prints a message "Enter a valid integer within the given range..." if the user makes the above mentioned line's condition true and then code breaks
