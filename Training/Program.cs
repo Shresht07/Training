@@ -3,7 +3,8 @@ int power = 1, remainder = 0, divisor = 2, nGuesses = 0, pov = 0;
 Console.WriteLine ("Find the guessed number :) \nThink of a number from 1 to 128...");
 do {
    //prompts the user to enter y or n wheather the remainder is 0 or 1 if divisible by 2
-   Console.Write ($"\nIs the Number % {divisor} = {remainder} ? [Y/N] --> ");
+   //Press Y or y for Yes and N or n for No
+   Console.Write ($"\nIs remainder {remainder}, when you divide the number by {divisor}: [Y/N] --> ");
    switch (Console.ReadKey ().Key) {
       case ConsoleKey.Y:
          power++;                                                                                           //power is incremented for each and every valid reply 
