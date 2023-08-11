@@ -26,20 +26,20 @@ string DecimalToBinary (int dec) {                                         //Thi
    if (dec == 0)
       return "0";
    while (dec > 0) {
-      binRemainder = dec % 2;                                              //The decimal number is first divided by modulus operator
-      binary = binRemainder + binary;                                      //remainder obtained in the previous line is added to the empty binary string
-      dec/= 2;                                                             //decimal number is update dby dividing it further by 2
+      binRemainder = dec % 2;                                               //The decimal number is first divided by modulus operator
+      binary = binRemainder + binary;                                       //remainder obtained in the previous line is added to the empty binary string
+      dec /= 2;                                                             //decimal number is update dby dividing it further by 2
    }
-   return binary;                                                          //returns the updated binary string as output
+   return binary;                                                           //returns the updated binary string as output
 }
 string DecimalToHex (int dec) {
    if (dec == 0)
       return "0";
-   string hexChars = "0123456789ABCDEF";                                   //hexadecimal characters are defined in a string as hexChars
+   string hexChars = "0123456789ABCDEF";                                    //hexadecimal characters are defined in a string as hexChars
    string hex = "";
    while (dec > 0) {
       hex += hexChars[dec % 16];                                            //empty string hex is updated by dividing the decimal number by 16 using modulo operator,
-      dec/= 16;                                                            //after which the quotient indicates the index of the hexChars string
-   }                                                                       //and is added to the empty string 
+      dec /= 16;                                                            //after which the quotient indicates the index of the hexChars string
+   }                                                                        //and is added to the empty string 
    return hex;
 }
