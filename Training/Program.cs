@@ -2,18 +2,18 @@
 int number;
 while (true) {
    Console.Write ("For words representation, enter within 9000000000 \nFor roman numeral conversion, enter within 39999 \nEnter the number:");                                                                       
-   if (int.TryParse (Console.ReadLine (), out number) && (number >= 0))                                        //Accepts if only a valid integer is entered
+   if (int.TryParse (Console.ReadLine (), out number) && (number >= 0))                                       //Accepts if only a valid integer is entered
       break;
    else
-      Console.WriteLine ("Enter a valid key :)");                                                              //Else prompts to enter valid key
+      Console.WriteLine ("Enter a valid number");                                                             //Else prompts to enter valid key
 }
 Console.WriteLine ("Mention your conversion type: (W)ords or (R)oman numerals");
-switch (Console.ReadKey (true).Key) {                                                                          //Accepts w or W for words converter
+switch (Console.ReadKey (true).Key) {                                                                         //Accepts w or W for words converter
    case ConsoleKey.W:
       var words = NumberToWords (number);
       Console.WriteLine ($"\nWords representation: {words}");
       break;
-   case ConsoleKey.R:                                                                                          //R or r for roman numerals converter
+   case ConsoleKey.R:                                                                                         //R or r for roman numerals converter
       var roman = NumberToRoman (number);
       Console.WriteLine ($"\nRoman numerical representation: {roman}");
       break;
@@ -40,13 +40,13 @@ string NumberToWords (long number) {                                            
       words += NumberToWords (number / 100) + " hundred ";
       number %= 100;
    }
-   if (number > 0) {                                                                                           //If number is greater than zero
-      if (words != "")                                                                                         //And words is no longer an empty string  
+   if (number >= 0) {                                                                                         //If number is greater than zero
+      if (words != "")                                                                                        //And words is no longer an empty string  
          words += "and ";
       var units = new[] { "Zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
       var tens = new[] { "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
-      if (number < 20)                                                                                         //If the number is lesser than 20
-         words += units[number];                                                                               //Then the index from the units array is added to the words string 
+      if (number < 20)                                                                                        //If the number is lesser than 20
+         words += units[number];                                                                              //Then the index from the units array is added to the words string 
       else {
          words += tens[number / 10 - 2];
          if (number % 10 > 0)
