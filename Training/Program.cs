@@ -10,8 +10,8 @@ while (true) {
 Console.Write ("Fibonacci series: ");
 do {                                                                                  //Initialized i as 0 and if i is lesser than the given number and incrementing by 1
    Console.Write ($"{FibonacciSeq (i)},"); i++;
-} while (i < number);
-Console.Write ($"{FibonacciSeq (number)}");                                           //Prints the fibonacci series
+} while (i < number-1);
+Console.Write ($"{FibonacciSeq (number-1)}");                                         //Prints the fibonacci series
 int FibonacciSeq (int number) {                                                       //This function calculates the fibonacci series 
    if (number <= 1)                                                                   //If number less than 1, returns the number
       return number;
