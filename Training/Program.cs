@@ -1,25 +1,39 @@
-//This code gives LCM and GCD of given two input numbers
-int num1, num2;
-while (true) {                                                                     //Checks whether the input is a valid integer or not 
-   Console.Write ("Enter First Number: ");
-   if (int.TryParse (Console.ReadLine (), out num1) && num1 >= 0)
-      break;
-   else
-      Console.WriteLine ("Enter a valid integer :( ");
+//This code gives LCM and GCD of given multiple numbers
+Console.Write ("Mention the Count of numbers for GCD calculation: ");
+int nNum = int.Parse (Console.ReadLine ());
+List<int> numbers = GetNumbers (nNum);
+Console.WriteLine ($"The GCD of all input numbers --> {GCDforNnum (numbers)}");
+Console.WriteLine ($"The LCM of all input numbers --> {LCMforNnum (numbers)}");
+List<int> GetNumbers (int nNum) {
+   List<int> numbers = new ();
+   for (int a = 1; a <= nNum; a++) {
+      Console.Write ($"Enter number {a}: ");
+      int num = int.Parse (Console.ReadLine ());
+      numbers.Add (num);
+   }
+   return numbers;
 }
-while (true) {
-   Console.Write ("Enter Second Number: ");
-   if (int.TryParse (Console.ReadLine (), out num2) && num2 >= 0)
-      break;
-   else
-      Console.WriteLine ("Enter a valid integer :( ");
-}
-int GCD (int num1, int num2) {                                                     //GCD Function gives GCD of two input numbers
-   if (num2 == 0)                                                                  //Base Condition of the recursion method is given
+int GCD (int num1, int num2) {
+   if (num2 == 0)
       return num1;
    else
-      return GCD (num2, num2 % num1);                                              //returns the GCD of two numbers
+      return GCD (num2, num1 % num2);
 }
-int LCM = (num1 * num2) / GCD (num1, num2);                                        //LCM is calculated by the formula, product of two numbers ÷ GCD of two numbers.
-Console.WriteLine ($"LCM of {num1} and {num2} is {LCM}");
-Console.WriteLine ($"GCD of {num1} and {num2} is {GCD (num1, num2)}");
+int GCDforNnum (List<int> numbers) {
+   int result = numbers[0];
+   for (int i = 1; i < numbers.Count; i++) {
+      result = GCD (result, numbers[i]);
+   }
+   return result;
+}
+int LCM (int num1,int num2) {
+   int lcm = num1 * num2 / GCD (num1,num2);
+   return lcm;
+}
+int LCMforNnum (List<int> numbers) {
+   int resultLCM = numbers[0];
+   for (int i = 1; i < numbers.Count; i++) {
+      resultLCM = LCM (resultLCM, numbers[i]);
+   }
+   return resultLCM;
+}
