@@ -5,7 +5,7 @@ while (true) {
    if (int.TryParse (Console.ReadLine (), out number) && number >= 0)
       break;
    else
-      Console.WriteLine ("Invalid Input :(");
+      Console.WriteLine ("Enter a valid number");
 }
 Console.Write ("Fibonacci series: ");
 do {                                                                                  //Initialized i as 0 and if i is lesser than the given number and incrementing by 1
