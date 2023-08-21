@@ -1,7 +1,7 @@
 //Prime number checker 
 int number;
 while (true) {
-   Console.Write ("Enter the number: ");                          //Gets an input integer from user
+   Console.Write ("Enter the number: ");                         //Gets an input integer from user
    if (int.TryParse (Console.ReadLine (), out number))
       break;
    else
