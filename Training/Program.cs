@@ -5,7 +5,7 @@ while (true) {
    if (int.TryParse (Console.ReadLine (), out number) && number >= 0)
       break;
    else
-      Console.WriteLine ("Enter a valid integer :(");                          //If the input is not a valid integer then prompts the user to enter a valid integer
+      Console.WriteLine ("Enter a valid integer");                             //If the input is not a valid integer then prompts the user to enter a valid integer
 }
 int NumberRev (int number) {                                                   //This function reverses a number without string manipulation
    int result = 0;                                                             //A result variable is created to store the resultant number
@@ -15,7 +15,7 @@ int NumberRev (int number) {                                                   /
    }
    return result;                                                              //Returns the result
 }
-Console.WriteLine ($"Reversed form of given number is {NumberRev (number)}");  //prints the output in reverse form
+Console.WriteLine ($"Reversed form of given number is {NumberRev (number)}");  //Prints the output in reverse form
 
 //Checks whether the number is palindrome or not
 if (number == NumberRev (number))
