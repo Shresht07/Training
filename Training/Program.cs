@@ -55,7 +55,7 @@ string NumberToWords (long number) {                                            
    }
    return words;
 }
-string NumberToRoman (int number) {                                                                           //This method converts the number into roman numeral representation
+string NumberToRoman (int number) {                                                                          //This method converts the number into roman numeral representation
    if (number == 0) return "No symbol";
    if (number < 0) return ($"Minus {NumberToRoman (Math.Abs (number))}");
    var symbols = new[] { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M", "MV!", "V!", "MX!", "X!" };
