@@ -11,9 +11,10 @@ int DigitalRoot (int number) {                                                  
       result += number % 10;                                                    //The remainder of number mod 10 is added to the result  
       number /= 10;                                                             //The number is then updated
    }
-   if (result % 9 == 0)                                                         //Since the root must be a single digit, result mod 9 is done
-      return 9;                                                                 //If the result is equal to 9, then returns 9
-   else
-      return result % 9;                                                        //Else result mod 9 is done
+   //if (result % 9 == 0)                                                         //
+   //   return 9;                                                                 //
+   //else
+   //   return result % 9;                                                       
+   return (result % 9 == 0 ? 9 : result % 9);
 }
-Console.WriteLine ($"Digital root --> {DigitalRoot (number)}");                 //Prints the digital root of the input
+Console.WriteLine ($"Digital root of {number} is {DigitalRoot (number)}");                 //Prints the digital root of the input
