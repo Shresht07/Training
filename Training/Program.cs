@@ -1,7 +1,7 @@
 //Number to Words or Roman numericals representation converter 
 int number;
 while (true) {
-   Console.Write ("For words representation, enter within 9000000000 \nFor roman numeral conversion, enter within 39999 \nEnter the number:");                                                                       
+   Console.Write ("For words representation, enter within 9000000000 \nFor roman numeral conversion, enter within 39999 \nEnter the number:");
    if (int.TryParse (Console.ReadLine (), out number) && (number >= 0))                                       //Accepts if only a valid integer is entered
       break;
    else
@@ -45,9 +45,9 @@ string NumberToWords (long number) {                                            
          words += "and ";
       var units = new[] { "Zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
       var tens = new[] { "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
-       words +=(number < 20)?  units[number] : words += tens[number / 10 - 2];                                                                                     //If the number is lesser than 20//Then the index from the units array is added to the words string 
-       words += (number % 10 > 0) ? " " + units[number % 10] : words;
-      }
+      words += (number < 20) ? units[number] : (words += tens[number / 10 - 2]);                             //If the number is lesser than 20,Then the index from the units array is added to the words string 
+      words += (number % 10 > 0) ? " " + units[number % 10] : words;
+   }
    return words;
 }
 string NumberToRoman (int number) {                                                                          //This method converts the number into roman numeral representation
