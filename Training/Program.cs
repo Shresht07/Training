@@ -7,7 +7,7 @@ while (true) {
    else
       Console.WriteLine ("Enter a valid integer :(");
 }
-bool IsPrime (int number) {                                      //A Boolean function which returns true when the input number is prime
+static bool IsPrime (int number) {                               //A Boolean function which returns true when the input number is prime
    if (number <= 1)                                              //If number is less then 1, then it might not be a prime number
       return false;
    for (int i = 2; i * i <= number; i++) {
@@ -16,7 +16,5 @@ bool IsPrime (int number) {                                      //A Boolean fun
    }
    return true;
 }
-if (IsPrime (number))
-   Console.WriteLine ($"{number} is a prime number");
-else
-   Console.WriteLine ($"{number} is not a prime number");
+var res = IsPrime (number) ? $"{number} is a prime number" : $"{number} is not a prime number";
+Console.WriteLine (res);
