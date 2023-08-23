@@ -9,5 +9,4 @@ static string WordReverse (string word) {                                       
    return wordRev;
 }
 //If the input word is equal to the reverse of the word,then it is a palindrome,else it is not a palindrome
-var result = (word == WordReverse (word)) ? ($"{WordReverse (word)} is a palindrome of {word}") : ($"{WordReverse (word)} is not a palindrome of {word}");
-Console.WriteLine (result);
+Console.WriteLine (word == WordReverse (word) ? $"{WordReverse (word)} is a palindrome of {word}" : $"{WordReverse (word)} is not a palindrome of {word}");
