@@ -1,34 +1,20 @@
 //Password validity checker which checks if the input password is valid or not
-while (true) {
+while (true) {                                                                                              //
    Console.Write ("Password: ");
    string password = Console.ReadLine ();
-   if (StrongPassword (password)) {
+   if (StrongPassword (password) == "") {
       Console.WriteLine ("Accepted");
       break;
    } else {
-      Console.WriteLine ("\nInvalid password. Try a new password.");
+      Console.WriteLine ($"{StrongPassword (password)}\nInvalid password. Try again.");
    }
-  static bool StrongPassword (string password) {
-      if (!password.Any (char.IsUpper)) {
-         Console.WriteLine ("Password must start with a Uppercase");
-         return false;
-      }
-      if (!password.Any (char.IsDigit)) {
-         Console.WriteLine ("Password must atleast contain a digit");
-         return false;
-      }
-      if (!password.Any (char.IsLower)) {
-         Console.WriteLine ("Password must contain atleast one lowercase");
-         return false;
-      }
-      if (!password.Any (char.IsSymbol) && !password.Any (char.IsPunctuation)) {
-         Console.WriteLine ("Password must contain atleast one special character");
-         return false;
-      }
-      if (password.Length <= 6) {
-         Console.WriteLine ("Password must contain atleast 6 characters");
-         return false;
-      }
-      return true;
-   }
+}
+static string StrongPassword (string password) {
+      string errorMsg = "";
+      errorMsg += (password.Length <= 6) ? "Password must contain atleast 6 characters\n" : errorMsg = "";
+      errorMsg += (!password.Any (char.IsUpper)) ? "Password should start with an uppercase letter\n" : errorMsg = "";
+      errorMsg += (!password.Any (char.IsLower)) ? "Password must contain at least one lowercase letter\n" : errorMsg = "";
+      errorMsg += (!password.Any (char.IsDigit)) ? "Password must contain at least one digit\n" : errorMsg = "";
+      errorMsg += (!password.Any (char.IsSymbol) && !password.Any (char.IsPunctuation)) ? "Password must contain at least one special character\n" : errorMsg = "";
+      return errorMsg;
 }
