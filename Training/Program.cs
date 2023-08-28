@@ -8,7 +8,7 @@ while (true) {
    } else {
       Console.WriteLine ("\nInvalid password. Try a new password.");
    }
-   bool StrongPassword (string password) {
+  static bool StrongPassword (string password) {
       if (!password.Any (char.IsUpper)) {
          Console.WriteLine ("Password must start with a Uppercase");
          return false;
