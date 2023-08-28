@@ -16,4 +16,4 @@ static int NumberRev (int number) {                                            /
    return result;                                                              // Returns the result
 }
 //Checks whether the number is palindrome or not
-Console.WriteLine (number == NumberRev (number) ? $"{NumberRev (number)} is a palindrome" : $"{NumberRev (number)} is not a palindrome");
+Console.WriteLine (number == NumberRev (number) ? "Palindrome" : "Not a palindrome");
