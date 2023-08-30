@@ -5,22 +5,14 @@ Console.WriteLine ("Enter a password which satisfies the following guidelines" +
    "\n3.Password must contain at least one lowercase letter" +
    "\n4.Password must contain atleast one digit" +
    "\n5.Password must contain at least one special character\n");
-//for (; ; ) {                                                                                          // An infinite loop to ask the user to enter a valid password 
-//   Console.Write ("Password: ");
-//   string password = Console.ReadLine ();
-//   if (StrongPassword (password) == "Accepted") {
-//      Console.WriteLine (StrongPassword (password));                                                  // If there are no error messages, then accepts the password 
-//      break;
-//   } else
-//      Console.WriteLine (StrongPassword (password));                                                  // Else asks for a valid password
-//}
-while(true) {
+for (; ; ) {                                                                                          // An infinite loop to ask the user to enter a valid password 
    Console.Write ("Password: ");
    string password = Console.ReadLine ();
-   while (StrongPassword (password) == "Accepted") { 
-      Console.WriteLine (StrongPassword(password));
+   if (StrongPassword (password) == "Accepted") {
+      Console.WriteLine (StrongPassword (password));                                                  // If there are no error messages, then accepts the password 
       break;
-   }
+   } else
+      Console.WriteLine (StrongPassword (password));                                                  // Else asks for a valid password
 }
 static string StrongPassword (string password) {
    if (password.Length < 6)                                                                           // Checks whether the input is less than 6 characters
