@@ -21,10 +21,9 @@ static string AbecedarianWord (string[] inWords) {                              
    foreach (string word in inWords) {                                                          // Iterate through each word in the input array.
       char[] sortedChars = word.ToCharArray ();                                                // Convert the word to an array of characters and sort them.
       Array.Sort (sortedChars);
-      string sortedWord = new string (sortedChars);
-      if (sortedWord == word && word.Length > longestAbecedarianWord.Length) {                 // Check if the sorted word is equal to the original word and longer than the current longest abecedarian word.
+      string sortedWord = new (sortedChars);
+      if (sortedWord == word && word.Length > longestAbecedarianWord.Length)                   // Check if the sorted word is equal to the original word and longer than the current longest abecedarian word.
          longestAbecedarianWord = word;                                                        // Update the longest abecedarian word.
-      }
    }
    return longestAbecedarianWord;                                                              // Return the longest abecedarian word.
 }
