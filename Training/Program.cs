@@ -8,12 +8,10 @@ Console.WriteLine ("Enter a password which satisfies the following guidelines" +
 for (; ; ) {                                                                                          // An infinite loop to ask the user to enter a valid password 
    Console.Write ("Password: ");
    string password = Console.ReadLine ();
-   if (StrongPassword (password) == "Accepted") {
-      Console.WriteLine (StrongPassword (password));                                                  // If there are no error messages, then accepts the password 
-      break;
-   } else
-      Console.WriteLine (StrongPassword (password));                                                  // Else asks for a valid password
-}
+   var msg = StrongPassword (password);
+   Console.WriteLine (msg);
+   if (msg == "Accepted") break;
+}                                                                                                
 static string StrongPassword (string password) {
    if (password.Length < 6)                                                                           // Checks whether the input is less than 6 characters
       return "Password must contain atleast 6 characters\nInvalid password, Try again.";
