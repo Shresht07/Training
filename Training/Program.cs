@@ -15,10 +15,10 @@ foreach (string permutation in combinations) {
    Console.WriteLine (permutation);
 }
 static List<string> GeneratePermutations (string inWord) {
-   List<string> permutations = new ();
+   List<string> result = new ();
    if (inWord.Length == 1) {
-      permutations.Add (inWord);
-      return permutations;
+      result.Add (inWord);
+      return result;
    }
    for (int i = 0; i < inWord.Length; i++) {
       string currentWord = inWord[i].ToString();
@@ -27,8 +27,8 @@ static List<string> GeneratePermutations (string inWord) {
       List<string> remainingPermutations = GeneratePermutations (remainingWord);
 
       foreach (string permutation in remainingPermutations) {
-         permutations.Add (currentWord + permutation);
+         result.Add (currentWord + permutation);
       }
    }
-   return permutations;
+   return result;
 }
