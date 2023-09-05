@@ -14,7 +14,6 @@ BottomLine();
 Pawns ("\u265f");
 BottomLine();
 
-
 // Empty rows in the middle 
 for (int j = 0; j < 4; j++) {
    Console.WriteLine ("\u2502   \u2502   \u2502   \u2502   \u2502   \u2502   \u2502   \u2502   \u2502");
@@ -31,12 +30,14 @@ Console.Write ("\u2514\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u2534\u2500\u2500\u2500");
 Console.WriteLine ("\u2518");
+
 static void BottomLine () {
    Console.Write ("\u251c\u2500\u2500\u2500");
    for (int i = 0; i < 7; i++)
       Console.Write ("\u253c\u2500\u2500\u2500");
    Console.WriteLine ("\u2524");
 }
+
 static void Pawns (string unicode) {
    Console.WriteLine ($"\u2502 {unicode} \u2502 {unicode} \u2502 {unicode} \u2502 {unicode} \u2502 {unicode} \u2502 {unicode} \u2502 {unicode} \u2502 {unicode} \u2502");
 }
