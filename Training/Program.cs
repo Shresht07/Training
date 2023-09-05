@@ -1,7 +1,8 @@
-﻿using System.Text;
+﻿// Chess Board 
+using System.Text;
 System.Console.OutputEncoding = new UnicodeEncoding ();
-// Chess Board 
-//First Row
+
+// First Row
 Console.Write ("\u250c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u252c\u2500\u2500\u2500\u2500");
@@ -11,51 +12,51 @@ for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Second Row
+// Second Row
 Console.Write ("\n\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502" + " \u265f " + "\u2502");
 Console.Write ("\n\u251c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Third Row
+// Third Row
 Console.Write ("\n\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502");
 Console.Write ("\n\u251c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Fourth Row
+// Fourth Row
 Console.Write ("\n\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502");
 Console.Write ("\n\u251c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Fifth Row
+// Fifth Row
 Console.Write ("\n\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502");
 Console.Write ("\n\u251c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Sixth Row
+// Sixth Row
 Console.Write ("\n\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502" + "    " + "\u2502");
 Console.Write ("\n\u251c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Seventh Row
+// Seventh Row
 Console.Write ("\n\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502" + " \u2659  " + "\u2502");
 Console.Write ("\n\u251c\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500\u2500");
 Console.Write ("\u2524");
 
-//Eighth Row
+// Eighth Row
 Console.Write ("\n\u2502" + " \u2656  " + "\u2502" + " \u2658  " + "\u2502" + " \u2657  " + "\u2502" + " \u2655  " + "\u2502" + " \u2654  " + "\u2502" + " \u2657  " + "\u2502" + " \u2658  " + "\u2502" + " \u2656  " + "\u2502");
 Console.Write ("\n\u2514\u2500\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u2534\u2500\u2500\u2500\u2500");
-Console.Write ("\u2518");
+Console.Write ("\u2518\n");
