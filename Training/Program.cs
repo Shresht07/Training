@@ -2,7 +2,7 @@
 using System.Text;
 System.Console.OutputEncoding = new UnicodeEncoding ();
 
-// First Row --> Black king,queen,bishops,elephants and horses
+// First Row --> Black king, queen, bishops, elephants and horses
 Console.Write ("\u250c\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u252c\u2500\u2500\u2500");
@@ -28,14 +28,14 @@ for (int j = 0; j < 4; j++) {
    Console.Write ("\u2524");
 }
 
-// Seventh Row --> 
+// Seventh Row --> White pawns
 Console.WriteLine ("\n\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502" + " \u2659 " + "\u2502");
 Console.Write ("\u251c\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
    Console.Write ("\u253c\u2500\u2500\u2500");
 Console.WriteLine ("\u2524");
 
-// Eighth Row
+// Eighth Row --> White king, queen, bishops, elephants and horses
 Console.WriteLine ("\u2502" + " \u2656 " + "\u2502" + " \u2658 " + "\u2502" + " \u2657 " + "\u2502" + " \u2655 " + "\u2502" + " \u2654 " + "\u2502" + " \u2657 " + "\u2502" + " \u2658 " + "\u2502" + " \u2656 " + "\u2502");
 Console.Write ("\u2514\u2500\u2500\u2500");
 for (int i = 0; i < 7; i++)
