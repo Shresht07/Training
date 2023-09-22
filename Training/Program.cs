@@ -18,7 +18,7 @@ static void SwapOfIndices (int inputNum, int index1, int index2) {
       Console.Write ("Swapped number: ");
       (nums[index1], nums[index2]) = (nums[index2], nums[index1]);
    } else
-      Console.Write ("Enter the index within the length of the input number ");
+      Console.WriteLine ("Enter the index within the length of the input number ");
    for (int i = 0; i < nums.Length; i++) {
       if (index1 > nums.Length || index2 > nums.Length)
          break;
