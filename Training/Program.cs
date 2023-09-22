@@ -10,8 +10,7 @@ Console.WriteLine ($"After swaping a = {a} and b = {b}");
 /// <summary> Swaps the variable a and b to b and a respectively</summary>
 /// <int name="a",<int name = "b">></void>
 static void SwapNum (ref int a, ref int b) {
-   int temp = 0;
-   a = temp;
-   temp = b;
+   int temp = a;
+   a = b;
    b = temp;
 }
