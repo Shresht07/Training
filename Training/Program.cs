@@ -11,7 +11,7 @@ namespace Training {
    /// <summary>Voting Contest</summary>
    internal class Program {
       #region Methods ---------------------------------------------
-      /// <summary>Takes an string of contestents as input and returns the winnervas output</summary>
+      /// <summary>Takes an string of contestents as input and returns the winner as output</summary>
       /// <param name="args">Arguments</param>
       private static void Main (string[] args) {
          Console.WriteLine ("Voting Contest\nThe input must not be an empty string");
@@ -31,7 +31,7 @@ namespace Training {
                Console.WriteLine ("Enter a valid string");
          }
       }
-      /// <summary></summary>
+      /// <summary>Takes input of the user as contestents and returns the winner and the count of votes he won with</summary>
       /// <param name="inputStr">User input</param>
       /// <returns>Winner of the voting contest</returns>
       static (string, int) VotingContest (string inputStr) {
