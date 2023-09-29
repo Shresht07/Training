@@ -8,21 +8,44 @@ for (; ; ) {
    else
       Console.WriteLine ("Enter a valid integer");
 }
-static long NthArmstrongNumber (int nArmsNum) {
-   long[] result = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 153, 371, 407, 1634, 8208, 9474, 54748, 92727, 93084, 548834, 1741725, 4210818, 9800817, 9926315, 24678051 };
-   return result[nArmsNum - 1];
-}
+int nthArmsNum = CalculateNthArmstrong (nArmsNum);
 switch (nArmsNum) {
    case 1:
-      Console.Write ($"The {nArmsNum}st armstrong number is {NthArmstrongNumber (nArmsNum)}");
+      Console.Write ($"The {nArmsNum}st armstrong number is {nthArmsNum}");
       break;
    case 2:
-      Console.Write ($"The {nArmsNum}nd armstrong number is {NthArmstrongNumber (nArmsNum)}");
+      Console.Write ($"The {nArmsNum}nd armstrong number is {nthArmsNum}");
       break;
    case 3:
-      Console.Write ($"The {nArmsNum}rd armstrong number is {NthArmstrongNumber (nArmsNum)}");
+      Console.Write ($"The {nArmsNum}rd armstrong number is {nthArmsNum}");
       break;
    default:
-      Console.WriteLine ($"The {nArmsNum}th armstrong number is {NthArmstrongNumber (nArmsNum)}");
+      Console.Write ($"The {nArmsNum}th armstrong number is {nthArmsNum}");
       break;
+}
+
+static int ArmstrongNumber (int inputNumber) {
+   List<int> digits = new ();
+   int result = 0;
+   if (inputNumber == 0)
+      return 0;
+   while (inputNumber > 0) {
+      digits.Add (inputNumber % 10);
+      inputNumber /= 10;
+   }
+   foreach (int digit in digits) {
+      result += (int)Math.Pow (digit, digits.Count);
+   }
+   return result;
+}
+
+static int CalculateNthArmstrong (int nArmsNum) {
+   if (nArmsNum == 1) return 0;
+   int count = 1, num = 1;
+   while (count < nArmsNum) {
+      num++;
+      if (ArmstrongNumber (num) == num)
+         count++;
+   }
+   return num;
 }
