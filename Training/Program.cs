@@ -3,9 +3,7 @@
 // Copyright (c) Metamation India.                                               
 // ---------------------------------------------------------------------------      
 // Program.cs                                                                    
-// <TODO: Define what this file going to contains in terms of functionalities.(min 1:max 4 lines).
-// e.g: Class program prints the text 'Hello World' in the console.
-// Likewise, if the class has more definitions of methods, then just explain the functionalities in simple words>
+// <TODO: This file contains the code which returns the winner of a voting contest between the chars present in the input by the user>
 // ---------------------------------------------------------------------------------------
 using System.Text.RegularExpressions;
 namespace Training {
@@ -25,8 +23,8 @@ namespace Training {
             else if (inputStr.Length == 1)
                Console.WriteLine ($"And the winner is: {inputStr.ToUpper ()} with {inputStr.Length} vote\nPress '~' and 'enter' to Quit");
             else if (Regex.IsMatch (inputStr, "^[a-zA-Z]+$")) {
-               string winner = VotingContest (ref inputStr);
-               Console.WriteLine ($"And the winner is: {winner.FirstOrDefault ()} with {winner.Length} votes");
+               (string, int) winner = VotingContest (inputStr);
+               Console.WriteLine ($"And the winner is: {winner.Item1.First ()} with {winner.Item2} votes");
                Console.WriteLine ("Press '~' and 'enter' to Quit");
                continue;
             } else
@@ -34,14 +32,14 @@ namespace Training {
          }
       }
       /// <summary></summary>
-      /// <param name="str">User input</param>
+      /// <param name="inputStr">User input</param>
       /// <returns>Winner of the voting contest</returns>
-      static string VotingContest (ref string str) {
-         char[] contestents = str.ToUpper ().ToCharArray ();
+      static (string, int) VotingContest (string inputStr) {
+         char[] contestents = inputStr.ToUpper ().ToCharArray ();
          Array.Sort (contestents);
          string result = "";
          for (int i = 0; i < contestents.Length - 1; i++) result += contestents[i] == contestents[i + 1] ? contestents[i] : contestents[i] + ",";
-         return result.Split (',').OrderByDescending (g => g.Length).FirstOrDefault ();
+         return (result.Split (',').OrderByDescending (g => g.Length).First (), result.Split (',').OrderByDescending (g => g.Length).First ().Length);
       }
       #endregion
    }
