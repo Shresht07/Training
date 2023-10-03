@@ -8,10 +8,10 @@ int wrappers = int.Parse (Console.ReadLine ());
 Console.Write ($"Maxmimum number of chocolates bought(C): {result.Item2}\nBalance amount(X): {result.Item1}\nBalance no.of wrappers(W): {result.Item3}");
 static (int, int, int) ChocolateWrappers (int amount, int price, int wrappers) {
    int maxChocolates = amount / price, balAmount = amount % price, balWrappers = maxChocolates;
-   do {
+   while (balWrappers >= wrappers) {
       balWrappers -= wrappers;
       balWrappers++;
       maxChocolates++;
-   } while (balWrappers >= wrappers);
+   }
    return (balAmount, maxChocolates, balWrappers);
 }
