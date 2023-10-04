@@ -11,7 +11,7 @@ namespace Training {
    /// <summary>Voting Contest</summary>
    internal class Program {
       #region Methods ---------------------------------------------
-      /// <summary>Takes an string of contestents as input and returns the winner as output</summary>
+      /// <summary>Entry point of the program</summary>
       /// <param name="args">Arguments</param>
       private static void Main (string[] args) {
          Console.WriteLine ("Voting Contest\nThe input must not be an empty string");
@@ -23,8 +23,8 @@ namespace Training {
             else if (inputStr.Length == 1)
                Console.WriteLine ($"And the winner is: {inputStr.ToUpper ()} with {inputStr.Length} vote\nPress '~' and 'enter' to Quit");
             else if (Regex.IsMatch (inputStr, "^[a-zA-Z]+$")) {
-               (string, int) winner = VotingContest (inputStr);
-               Console.WriteLine ($"And the winner is: {winner.Item1.First ()} with {winner.Item2} votes");
+               (string winnerName, int voteCount) = VotingContest (inputStr);
+               Console.WriteLine ($"And the winner is: {winnerName.First ()} with {voteCount} votes");
                Console.WriteLine ("Press '~' and 'enter' to Quit");
                continue;
             } else
@@ -39,7 +39,8 @@ namespace Training {
          Array.Sort (contestents);
          string result = "";
          for (int i = 0; i < contestents.Length - 1; i++) result += contestents[i] == contestents[i + 1] ? contestents[i] : contestents[i] + ",";
-         return (result.Split (',').OrderByDescending (g => g.Length).First (), result.Split (',').OrderByDescending (g => g.Length).First ().Length);
+         var res = result.Split (',').OrderByDescending (x => x.Length).First ();
+         return (res, res.Length);
       }
       #endregion
    }
