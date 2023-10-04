@@ -23,8 +23,8 @@ namespace Training {
             else if (inputStr.Length == 1)
                Console.WriteLine ($"And the winner is: {inputStr.ToUpper ()} with {inputStr.Length} vote\nPress '~' and 'enter' to Quit");
             else if (Regex.IsMatch (inputStr, "^[a-zA-Z]+$")) {
-               (string winnerName, int voteCount) = VotingContest (inputStr);
-               Console.WriteLine ($"And the winner is: {winnerName.First ()} with {voteCount} votes");
+               (char winnerName, int voteCount) = VotingContest (inputStr);
+               Console.WriteLine ($"And the winner is: {winnerName} with {voteCount} votes");
                Console.WriteLine ("Press '~' and 'enter' to Quit");
                continue;
             } else
@@ -34,13 +34,13 @@ namespace Training {
       /// <summary>Takes input of the user as contestents and returns the winner and the count of votes he won with</summary>
       /// <param name="inputStr">User input</param>
       /// <returns>Winner of the voting contest</returns>
-      static (string, int) VotingContest (string inputStr) {
+      static (char, int) VotingContest (string inputStr) {
          char[] contestents = inputStr.ToUpper ().ToCharArray ();
          Array.Sort (contestents);
          string result = "";
          for (int i = 0; i < contestents.Length - 1; i++) result += contestents[i] == contestents[i + 1] ? contestents[i] : contestents[i] + ",";
          var res = result.Split (',').OrderByDescending (x => x.Length).First ();
-         return (res, res.Length);
+         return (res.First(), res.Length);
       }
       #endregion
    }
