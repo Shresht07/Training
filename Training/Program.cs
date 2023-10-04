@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------      
 // Program.cs                                                                    
 // <TODO: Displays the individual digits of a given number, which should also handle decimal digits.
-// For example, 355.56 is the input number, output = integral part: 3 5 5; factorial part: 5 6. >
+// For example, 355.56 is the input number, output = integral part: 3 5 5; fractional part: 5 6. >
 // ---------------------------------------------------------------------------------------
 internal class Program {
    /// <summary>Display the individual digits of a given number</summary>
@@ -22,7 +22,7 @@ internal class Program {
                Console.WriteLine ($"Fractional part: {fractionalPart}");
             } else
                Console.WriteLine ("Fractional part: 0");
-            break;
+            continue;
          } else
             Console.WriteLine ("Enter a valid decimal number");
       }
