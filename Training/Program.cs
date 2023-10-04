@@ -1,65 +1,30 @@
-//Integral part and fractional part calculator
-decimal inputNum;
-for (; ; ) {
-   Console.Write ("Enter a decimal number: ");
-   if (decimal.TryParse (Console.ReadLine (), out inputNum) && inputNum >= 0)
-      break;
-   else
-      Console.WriteLine ("Enter a valid decimal number");
-}
-string integralValues = IntegralPart (inputNum);
-string fractionalValues = FractionalPart (inputNum);
-IntegralPartWithSpaces (integralValues);
-FractionalPartWithSpaces (fractionalValues);
-
-/// <summary> Return the integral part of a input decimal number.</summary>
-/// <decimal name="inputNum"></string>
-static string IntegralPart (decimal inputNum) {
-   int integralRes = 0;
-   integralRes += (int)Math.Floor (inputNum);
-   if (integralRes == 0)
-      return "0";
-   else if (integralRes < 0)
-      return "No Integral part";
-   else
-      return integralRes.ToString ();
-}
-
-/// <summary> Returns the fractional part of the input decimal number</summary>
-/// <decimal name="inputNum"></string>
-static string FractionalPart (decimal inputNum) {
-   decimal fractionalRes = 0;
-   fractionalRes += inputNum - Math.Floor (inputNum);
-   if (fractionalRes == 0)
-      return "No Fractional part";
-   else
-      return fractionalRes.ToString ().Remove (0, 2);
-}
-
-/// <summary> Prints the Integral part of the input number with spaces </summary>
-/// <string name="integralValues"></void>
-static void IntegralPartWithSpaces (string integralValues) {
-   char[] intPart = integralValues.ToCharArray ();
-   Console.Write ("Integral Part: ");
-   for (int i = 0; i < intPart.Length; i++) {
-      if (integralValues == "No Integral part") {
-         Console.Write ("None");
-         break;
-      } else
-         Console.Write (intPart[i] + " ");
-   }
-}
-
-/// <summary> Prints the fractional part of the input number with spaces </summary>
-/// <string name="fractionalvalues"></void>
-static void FractionalPartWithSpaces (string fractionalValues) {
-   char[] fracPart = fractionalValues.ToCharArray ();
-   Console.Write ("\nFractional Part: ");
-   for (int i = 0; i < fracPart.Length; i++) {
-      if (fractionalValues == "No Fractional part") {
-         Console.WriteLine ("None");
-         break;
-      } else
-         Console.Write (fracPart[i] + " ");
+// ---------------------------------------------------------------------------------------
+// Training ~ A training program for new joinees at Metamation, Batch- July 2023
+// Copyright (c) Metamation India.                                               
+// ---------------------------------------------------------------------------      
+// Program.cs                                                                    
+// <TODO: Displays the individual digits of a given number, which should also handle decimal digits.
+// For example, 355.56 is the input number, output = integral part: 3 5 5; factorial part: 5 6. >
+// ---------------------------------------------------------------------------------------
+internal class Program {
+   /// <summary>Display the individual digits of a given number</summary>
+   /// <param name="args">arguments</param>
+   private static void Main (string[] args) {
+      for (; ; ) {
+         Console.Write ("Enter a decimal number: ");
+         if (decimal.TryParse (Console.ReadLine (), out decimal inputNum) && inputNum >= 0) {
+            int integralRes = (int)Math.Floor (inputNum);
+            decimal fractionalRes = inputNum - Math.Floor (inputNum);
+            var integralPart = string.Join (" ", integralRes.ToString ().ToCharArray ());
+            Console.WriteLine ($"Integral part: {integralPart}");
+            if (fractionalRes > 0) {
+               var fractionalPart = string.Join (" ", fractionalRes.ToString ().Remove (0, 2).ToCharArray ());
+               Console.WriteLine ($"Fractional part: {fractionalPart}");
+            } else
+               Console.WriteLine ("Fractional part: 0");
+            break;
+         } else
+            Console.WriteLine ("Enter a valid decimal number");
+      }
    }
 }
