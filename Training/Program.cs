@@ -1,17 +1,19 @@
 Console.Write ("Enter an integer: ");
 int inputNumber = int.Parse (Console.ReadLine ());
-static int ArmstrongNumber (int inputNumber) {
+Console.WriteLine (IsArmstrongNumber (inputNumber) ? "It's an Armstrong number" : "It's not an Armstrong number");
+
+static bool IsArmstrongNumber (int inputNumber) {
    List<int> digits = new ();
+   int tempNumber = inputNumber;
    int result = 0;
    if (inputNumber == 0)
-      return 0;
-   while (inputNumber > 0) {
-      digits.Add (inputNumber % 10);
-      inputNumber /= 10;
+      return true;
+   while (tempNumber > 0) {
+      digits.Add (tempNumber % 10);
+      tempNumber /= 10;
    }
    foreach (int digit in digits) {
       result += (int)Math.Pow (digit, digits.Count);
    }
-   return result;
+   return result == inputNumber;
 }
-Console.WriteLine (ArmstrongNumber (inputNumber) == inputNumber ? "Its an Armstrong number" : "Its not an Armstrong number");
