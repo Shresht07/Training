@@ -12,8 +12,7 @@ static bool IsArmstrongNumber (int inputNumber) {
       digits.Add (tempNumber % 10);
       tempNumber /= 10;
    }
-   foreach (int digit in digits) {
+   foreach (int digit in digits)
       result += (int)Math.Pow (digit, digits.Count);
-   }
    return result == inputNumber;
 }
