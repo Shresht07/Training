@@ -17,12 +17,13 @@ namespace Training {
             if (int.TryParse (Console.ReadLine (), out int mArmsNum) && mArmsNum <= 25) {
                int nthArmsNum = CalculateNthArmstrong (mArmsNum);
                Console.WriteLine (nthArmsNum);
-               break;
+               continue;
             } else if (mArmsNum > 25)
                Console.WriteLine ("Enter within the given range");
             else
                Console.WriteLine ("Enter a valid integer");
          }
+         
          /// <summary>Takes input of the user and returns true if input is armstrong number</summary>
          /// <param name="inputNumber">User input</param>
          /// <returns>If the input is armstrong number or not</returns>
@@ -36,6 +37,7 @@ namespace Training {
             }
             return result == inputNumber;
          }
+         
          /// <summary>Calculates the Nth Armstrong number</summary>
          /// <param name="armsNum">User input</param>
          /// <returns>Nth armstrong number</returns>
