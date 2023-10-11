@@ -16,7 +16,7 @@ namespace Training {
       private static void Main (string[] args) {
          string inputStr = GetInput ("Enter a string: ", "Enter a valid string. Empty string is not allowed");
          string inSplChar = GetInput ("Mention the special character to be swapped: ", "Enter a valid special character. Entering empty special character is not allowed");
-         Console.Write ("Mention whether the order is (d)escending or (a)escending: ");
+         Console.Write ("Mention whether the order is (d)escending or (a)scending: ");
          string order = Console.ReadLine ();
          SortAndSwapSplChars (inputStr, inSplChar, order);
       }
