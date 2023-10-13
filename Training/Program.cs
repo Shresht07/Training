@@ -41,14 +41,12 @@ namespace Training {
          int input;
          for (; ; ) {
             Console.Write (questions);
-            if (int.TryParse (Console.ReadLine (), out input) && input >= 0)
-               break;
-            else
-               Console.WriteLine (warningMsg);
+            if (int.TryParse (Console.ReadLine (), out input) && input >= 0) break;
+            else Console.WriteLine (warningMsg);
          }
          return input;
       }
       #endregion
-   #endregion
    }
+   #endregion
 }
