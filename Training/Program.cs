@@ -11,7 +11,7 @@ namespace Training {
    /// <summary>Sort and swap special character</summary>
    internal class Program {
       #region Methods ---------------------------------------------
-      /// <summary>This method prints swaped characters</summary>
+      /// <summary>This method prints swapped characters</summary>
       /// <param name="args">arguments</param>
       private static void Main (string[] args) {
          string inputStr = GetInput ("Enter a string: ", "Enter a valid string. Empty string is not allowed");
@@ -25,7 +25,6 @@ namespace Training {
       /// <param name="inputStr">User input</param>
       /// <param name="inSplChar">User input for special character</param>
       /// <param name="order">arrangement order</param>
-      /// <returns>input integer</returns>
       static void SortAndSwapSplChars (string inputStr, string inSplChar, string order) {
          char splChar = char.Parse (inSplChar);
          List<char> tempList = inputStr.ToList ();
@@ -39,22 +38,20 @@ namespace Training {
          Console.Write (string.Join (",", tempList));
       }
 
-      /// <summary>Checks whether the input is valid or not</summary>
+      /// <summary>This method validates the user input and returns valid input</summary>
       /// <param name="input">User input</param>
-      /// <returns>input integer</returns>
+      /// <return>valid input string</return>
       static string GetInput (string questions, string warningMsg) {
          string input;
          for (; ; ) {
             Console.Write (questions);
             input = Console.ReadLine ();
-            if (input != "")
-               break;
-            else
-               Console.WriteLine (warningMsg);
+            if (input != "") break;
+            else Console.WriteLine (warningMsg);
          }
          return input;
       }
-   }
       #endregion
+   }
    #endregion
 }
