@@ -3,7 +3,7 @@
 // Copyright (c) Metamation India.
 // ---------------------------------------------------------------------------
 // Program.cs
-// <TODO: //Write a program to help solve a New-York Times style Spelling Bee.
+// <TODO: Write a program to help solve a New-York Times style Spelling Bee.
 // The program can assume a word list is given as a text file, and that the daily choice of 7 letters is provided as an array of 7 chars>
 // ---------------------------------------------------------------------------------------
 namespace Training {
@@ -24,8 +24,7 @@ namespace Training {
                Console.ForegroundColor = ConsoleColor.Green;
                Console.WriteLine ($"{res.Value}. {res.Key}");
                Console.ResetColor ();
-               }
-            else Console.WriteLine ($" {res.Value}. {res.Key}");
+            } else Console.WriteLine ($" {res.Value}. {res.Key}");
          Console.WriteLine ($"----\n{total} total");
       }
 
@@ -48,7 +47,7 @@ namespace Training {
       /// <param name="letters">Characters list</param>
       /// <returns>Word is pangram or not</returns>
       static bool IsPangram (string word, char[] letters) => letters.All (word.Contains);
-   }
       #endregion
+   }
    #endregion
 }
