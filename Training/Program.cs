@@ -14,7 +14,7 @@ namespace Training {
       /// <summary>This Method prints List of words which satisfies the conditions given below </summary>
       /// <param name="args">arguments</param>
       private static void Main (string[] args) {
-         string[] wordList = File.ReadAllLines (@"C:\Users\baskaransh\Downloads\words.txt");
+         string[] wordList = File.ReadAllLines (@"C:\etc\words.txt");
          char[] letters = { 'U', 'X', 'A', 'L', 'T', 'N', 'E' };
          Dictionary<string, int> validWords = GetValidWords (wordList, letters);
          var result = validWords.OrderByDescending (pair => pair.Value).ThenBy (pair => pair.Key).ToList ();
@@ -32,7 +32,7 @@ namespace Training {
       /// <summary>This method provides a dictionary of words which are valid</summary>
       /// <param name="wordList">Word list</param>
       /// <param name="letters">Characters list</param>
-      /// <returns>Valid words addition to a resultant dictionary</returns>
+      /// <returns>Valid words in a resultant dictionary</returns>
       static Dictionary<string, int> GetValidWords (string[] wordList, char[] letters) {
          var validWords = new Dictionary<string, int> ();
          foreach (string word in wordList)
