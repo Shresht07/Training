@@ -22,7 +22,9 @@ namespace Training {
       }
 
       /// <summary>Takes inputs from user and returns the maximum number of chocolates C one can get along with any unused money X and wrappers W </summary>
-      /// <param name="input">User input</param>
+      /// <param name="amount">Amount</param>
+      /// <param name="price">price of chocolate</param>
+      /// <param name="wrappers">no.of wrappers per chocolate</param>
       /// <returns>balance amount, maximum no.of chocolates and balance no.of wrappers</returns>
       static (int c, int x, int w) ChocolateWrappers (int amount, int price, int wrappers) {
          int maxChocolates = amount / price, balAmount = amount % price, balWrappers = maxChocolates;
@@ -34,9 +36,9 @@ namespace Training {
          return (balAmount, maxChocolates, balWrappers);
       }
 
-      /// <summary>Checks whether the input is valid or not</summary>
+      /// <summary>This function gets user input and returns valid input.</summary>
       /// <param name="input">User input</param>
-      /// <returns>input integer</returns>
+      /// <return>input integer</return>
       static int GetInput (string questions, string warningMsg) {
          int input;
          for (; ; ) {
