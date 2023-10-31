@@ -117,7 +117,7 @@ namespace Training {
          list.Add (list.Count);
          Console.WriteLine (list[0]);
 
-         /// <summary>Tests the custom built-in List class</summary>
+         /// <summary>Prints the elements of list in certain order</summary>
          /// <param name="list"></param>
          static void PrintMyList (MyList<int> list) {
             Console.Write ("{");
