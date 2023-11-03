@@ -119,7 +119,7 @@ namespace Training {
          Console.Write ("After clearing list, list count => ");
          Console.WriteLine (list.Count);
 
-         /// <summary>Tests the custom built-in List class</summary>
+         /// <summary>Prints the elements of list in certain order</summary>
          /// <param name="list"></param>
          static void PrintMyList (MyList<int> list) {
             Console.Write ("{");
