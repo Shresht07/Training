@@ -44,7 +44,7 @@ namespace Training {
       /// <summary>Adds an element to the end of the list</summary>
       /// <param name="element">The element to add to the list</param>
       public void Add (T element) {
-         if (Count == Capacity) Array.Resize (ref mVariables, Capacity * 2);
+         if (Count >= Capacity) Array.Resize (ref mVariables, Capacity * 2);
          mVariables[mSize++] = element;
       }
 
@@ -52,10 +52,12 @@ namespace Training {
       /// <param name="element">The element to remove</param>
       /// <returns>True if the element was successfully removed</returns>
       public bool Remove (T element) {
-         if (mVariables.Contains (element)) {
-            mVariables = mVariables.Except (new T[] { element }).ToArray ();
+         int index = Array.IndexOf (mVariables, element, 0, Count);
+         if (index >= 0) {
+            RemoveAt (index);
             return true;
-         } else throw new InvalidOperationException ("Item that is not found in the list");
+         }
+         return false;
       }
 
       /// <summary>Clears the entire list</summary>
@@ -66,11 +68,10 @@ namespace Training {
       /// <param name="element"></param>
       /// <exception cref="IndexOutOfRangeException"></exception>
       public void Insert (int index, T element) {
-         if (index < 0 || index >= mVariables.Length) throw new IndexOutOfRangeException ("Index is out of range");
-         if (Count == Capacity) Array.Resize (ref mVariables, Capacity * 2);
-         mVariables[mSize++] = element;
-         for (int i = mSize - 1; i >= index; i--) mVariables[i + 1] = mVariables[i];
+         if (Count >= Capacity) Array.Resize (ref mVariables, Capacity * 2);
+         for (int i = mSize; i > index; i--) mVariables[i] = mVariables[i - 1];
          mVariables[index] = element;
+         mSize++;
       }
 
       /// <summary>Removes the element at the specified index</summary>
@@ -104,18 +105,19 @@ namespace Training {
          list.Add (1);
          list.Add (2);
          list.Add (4);
+         list.Remove (0);
          list.Add (5);
          list.Add (6);
+         list.Add (7);
          PrintMyList (list);
          Console.WriteLine ($"Count after adding elements in the list: {list.Count}");
          Console.WriteLine ($"Capacity after adding elements: {list.Capacity}");
          list.RemoveAt (0);
-         list.Insert (2, 3);
+         list.Insert (1, 3);
          PrintMyList (list);
          list.Clear ();
          Console.Write ("After clearing list, list count => ");
-         list.Add (list.Count);
-         Console.WriteLine (list[0]);
+         Console.WriteLine (list.Count);
 
          /// <summary>Tests the custom built-in List class</summary>
          /// <param name="list"></param>
