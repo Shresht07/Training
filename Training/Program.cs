@@ -13,33 +13,31 @@
 // }
 // ---------------------------------------------------------------------------------------
 
-using System.Reflection.Metadata.Ecma335;
-
 namespace Training {
    #region TStack<T> ---------------------------------------------------------------------
-   class TStack<T> {
+   public class TStack<T> {
       #region Properties --------------------------------------------
       public int Capacity => mData.Length;
       public int Count => mSize;
 
       /// <summary>Indicates whether the stack is empty</summary>
-      public bool IsEmpty => mData.Length == 0;
+      public bool IsEmpty => mSize == 0;
       #endregion
 
       #region Methods ----------------------------------------------------------------------
-      public void Exception() {
+      public void Check () {
          if (mSize == 0) throw new InvalidOperationException ("Empty stack");
       }
       /// <summary>Gets the top element from the stack and returns it</summary>
       public T Pop () {
-         if (mSize == 0) throw new InvalidOperationException ("Stack is empty");
+         Check ();
          return mData[--mSize];
       }
 
       /// <summary>This method returns the top element of the stack without removing it</summary>
       /// <returns>Stack element at the top</returns>
       public T Peek () {
-         if (mSize == 0) throw new InvalidOperationException ("Empty stack");
+         Check ();
          return mData[mSize - 1];
       }
 

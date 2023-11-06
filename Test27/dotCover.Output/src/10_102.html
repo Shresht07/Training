@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\WorkGIT\Training\Program.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+// ---------------------------------------------------------------------------------------
+// Training ~ A training program for new joinees at Metamation, Batch- July 2023.
+// Copyright (c) Metamation India.
+// ---------------------------------------------------------------------------
+// Program.cs
+// Program to Implement a Stack&lt;T&gt; class using arrays as the underlying data structure.
+// The Stack&lt;T&gt; should start with an initial capacity of 4 and double its capacity when needed.
+// class TStack&lt;T&gt; {
+//    public void Push (T item) { }
+//    public T Pop () { }
+//    public T Peek () { }
+//    public bool IsEmpty { get; }
+// }
+// ---------------------------------------------------------------------------------------
+
+namespace Training {
+   #region TStack&lt;T&gt; ---------------------------------------------------------------------
+   public class TStack&lt;T&gt; {
+      #region Properties --------------------------------------------
+      public int Capacity =&gt; mData.Length;
+      public int Count =&gt; mSize;
+
+      /// &lt;summary&gt;Indicates whether the stack is empty&lt;/summary&gt;
+      public bool IsEmpty =&gt; mSize == 0;
+      #endregion
+
+      #region Methods ----------------------------------------------------------------------
+      public void Check () {
+         if (mSize == 0) throw new InvalidOperationException (&quot;Empty stack&quot;);
+      }
+      /// &lt;summary&gt;Gets the top element from the stack and returns it&lt;/summary&gt;
+      public T Pop () {
+         Check ();
+         return mData[--mSize];
+      }
+
+      /// &lt;summary&gt;This method returns the top element of the stack without removing it&lt;/summary&gt;
+      /// &lt;returns&gt;Stack element at the top&lt;/returns&gt;
+      public T Peek () {
+         Check ();
+         return mData[mSize - 1];
+      }
+
+      /// &lt;summary&gt;An element is pushed to the top of the stack&lt;/summary&gt;
+      /// &lt;param name=&quot;element&quot;&gt;The element that needs to be pushed onto the stack&lt;/param&gt;
+      public void Push (T element) {
+         if (Count == Capacity) Array.Resize (ref mData, Capacity * 2);
+         mData[mSize++] = element;
+      }
+      #endregion
+
+      #region Private Fields ---------------------------------------- 
+      T[] mData = new T[4];
+      int mSize = 0;
+      #endregion
+   }
+   #endregion
+   internal class Program {
+      static void Main (string[] args) {
+         TStack&lt;string&gt; stack = new ();
+         Console.WriteLine ($&quot;Count before pushing elements in stack: {stack.Count}&quot;);
+         Console.WriteLine ($&quot;Capacity of stack: {stack.Capacity}&quot;);
+         Console.WriteLine (&quot;After pushing elements in stack;&quot;);
+         stack.Push (&quot;Java&quot;);
+         stack.Push (&quot;Python&quot;);
+         stack.Push (&quot;C&quot;);
+         stack.Push (&quot;C++&quot;);
+         stack.Push (&quot;C#&quot;);
+         Console.WriteLine ($&quot;Peeked element: {stack.Peek ()}&quot;);
+         Console.WriteLine ($&quot;Count after pushing elements in stack: {stack.Count}&quot;);
+         Console.WriteLine ($&quot;Popped element: {stack.Pop ()}&quot;);
+         Console.WriteLine ($&quot;Count after a popped element in stack: {stack.Count}&quot;);
+         Console.WriteLine ($&quot;Capacity of stack now: {stack.Capacity}&quot;);
+         Console.WriteLine ($&quot;Is stack empty =&gt; {stack.IsEmpty}&quot;);
+      }
+   }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,30,20,42,1],[21,27,21,32,1],[24,30,24,40,1],[28,28,28,29,1],[29,10,29,25,1],[29,26,29,78,1],[30,7,30,8,1],[32,23,32,24,1],[33,10,33,19,1],[34,10,34,32,0],[35,7,35,8,0],[39,24,39,25,1],[40,10,40,19,1],[41,10,41,34,1],[42,7,42,8,1],[46,36,46,37,1],[47,10,47,32,1],[47,33,47,72,1],[48,10,48,35,1],[49,7,49,8,1],[53,7,53,28,1],[54,7,54,21,1],[59,40,59,41,0],[60,10,60,40,0],[61,10,61,87,0],[62,10,62,69,0],[63,10,63,65,0],[64,10,64,30,0],[65,10,65,32,0],[66,10,66,27,0],[67,10,67,29,0],[68,10,68,28,0],[69,10,69,65,0],[70,10,70,86,0],[71,10,71,64,0],[72,10,72,86,0],[73,10,73,73,0],[74,10,74,67,0],[75,7,75,8,0]]);
+    </script>
+  </body>
+</html>
