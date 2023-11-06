@@ -13,6 +13,8 @@
 // }
 // ---------------------------------------------------------------------------------------
 
+using System.Reflection.Metadata.Ecma335;
+
 namespace Training {
    #region TStack<T> ---------------------------------------------------------------------
    class TStack<T> {
@@ -25,6 +27,9 @@ namespace Training {
       #endregion
 
       #region Methods ----------------------------------------------------------------------
+      public void Exception() {
+         if (mSize == 0) throw new InvalidOperationException ("Empty stack");
+      }
       /// <summary>Gets the top element from the stack and returns it</summary>
       public T Pop () {
          if (mSize == 0) throw new InvalidOperationException ("Stack is empty");
