@@ -16,51 +16,39 @@
 namespace Training {
    #region TStack<T> ---------------------------------------------------------------------
    class TStack<T> {
-      #region Constructor -------------------------------------------
-      /// <summary>Creates a new instance of TStack</summary>
-      public TStack () => mVariables = new T[4];
-      #endregion
-
       #region Properties --------------------------------------------
+      public int Capacity => mData.Length;
       public int Count => mSize;
-      public int Capacity => mVariables.Length;
 
       /// <summary>Indicates whether the stack is empty</summary>
-      public bool IsEmpty { get { return mVariables.Length == 0; } }
+      public bool IsEmpty => mData.Length == 0;
       #endregion
 
       #region Methods ----------------------------------------------------------------------
       /// <summary>Gets the top element from the stack and returns it</summary>
       public T Pop () {
-         try {
-            --mSize;
-            return mVariables[mSize];
-         } catch {
-            throw new InvalidOperationException ("Could not pop due to empty stack");
-         }
+         if (mSize ==0) throw new InvalidOperationException ("Stack is empty");
+         return mData[--mSize];
       }
 
       /// <summary>This method returns the top element of the stack without removing it</summary>
       /// <returns>Stack element at the top</returns>
       public T Peek () {
-         try {
-            return mVariables[mSize - 1];
-         } catch {
-            throw new InvalidOperationException ("Could not peek due to empty stack");
-         }
+         if (mSize ==0) throw new InvalidOperationException ("Empty stack");
+         return mData[mSize - 1];
       }
 
       /// <summary>An element is pushed to the top of the stack</summary>
       /// <param name="element">The element that needs to be pushed onto the stack</param>
       public void Push (T element) {
-         if (Count == Capacity) Array.Resize (ref mVariables, Capacity * 2);
-         mVariables[mSize++] = element;
+         if (Count == Capacity) Array.Resize (ref mData, Capacity * 2);
+         mData[mSize++] = element;
       }
       #endregion
 
       #region Private Fields ---------------------------------------- 
+      T[] mData = new T[4];
       int mSize = 0;
-      T[] mVariables;
       #endregion
    }
    #endregion
