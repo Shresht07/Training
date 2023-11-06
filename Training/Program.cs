@@ -27,14 +27,14 @@ namespace Training {
       #region Methods ----------------------------------------------------------------------
       /// <summary>Gets the top element from the stack and returns it</summary>
       public T Pop () {
-         if (mSize ==0) throw new InvalidOperationException ("Stack is empty");
+         if (mSize == 0) throw new InvalidOperationException ("Stack is empty");
          return mData[--mSize];
       }
 
       /// <summary>This method returns the top element of the stack without removing it</summary>
       /// <returns>Stack element at the top</returns>
       public T Peek () {
-         if (mSize ==0) throw new InvalidOperationException ("Empty stack");
+         if (mSize == 0) throw new InvalidOperationException ("Empty stack");
          return mData[mSize - 1];
       }
 
