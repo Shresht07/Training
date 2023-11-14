@@ -25,9 +25,12 @@ namespace Training {
       #endregion
 
       #region Methods ----------------------------------------------------------------------
+      /// <summary>Checks and throws an exception if queue is empty</summary>
+      /// <exception cref="InvalidOperationException">Thrown when the queue is empty</exception>
       public void Check () {
          if (mSize == 0) throw new InvalidOperationException ("Empty stack");
       }
+      
       /// <summary>Gets the top element from the stack and returns it</summary>
       public T Pop () {
          Check ();
@@ -49,7 +52,7 @@ namespace Training {
       }
       #endregion
 
-      #region Private Fields ---------------------------------------- 
+      #region Private Fields ----------------------------------------
       T[] mData = new T[4];
       int mSize = 0;
       #endregion
