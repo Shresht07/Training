@@ -84,6 +84,14 @@ namespace Training {
          Array.Resize (ref mVariables, mVariables.Length - 1);
          mSize--;
       }
+
+      /// <summary>Prints the elements of list in certain order</summary>
+      public void PrintMyList () {
+         Console.Write ("{");
+         for (int i = 0; i < mVariables.Length - 1; i++)
+            Console.Write (mVariables[i] + ",");
+         Console.WriteLine (mVariables[^1] + "}");
+      }
       #endregion
 
       #region Private Fields ------------------------------------------------
@@ -109,24 +117,14 @@ namespace Training {
          list.Add (5);
          list.Add (6);
          list.Add (7);
-         PrintMyList (list);
+         list.PrintMyList ();
          Console.WriteLine ($"Count after adding elements in the list: {list.Count}");
          Console.WriteLine ($"Capacity after adding elements: {list.Capacity}");
          list.RemoveAt (0);
          list.Insert (1, 3);
-         PrintMyList (list);
+         list.PrintMyList ();
          list.Clear ();
-         Console.Write ("After clearing list, list count => ");
-         Console.WriteLine (list.Count);
-
-         /// <summary>Prints the elements of list in certain order</summary>
-         /// <param name="list"></param>
-         static void PrintMyList (MyList<int> list) {
-            Console.Write ("{");
-            for (int i = 0; i < list.Count - 1; i++)
-               Console.Write (list[i] + ",");
-            Console.WriteLine (list[^1] + "}");
-         }
+         Console.Write ($"After clearing list, list count => {list.Count}");
       }
    }
    #endregion
