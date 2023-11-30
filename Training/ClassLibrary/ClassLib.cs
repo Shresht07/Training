@@ -17,7 +17,10 @@ namespace ClassLibrary {
    #region TStack<T> ------------------------------------------------------------------------------
    public class TStack<T> {
       #region Properties --------------------------------------------
+      /// <summary>This property returns the current list capacity</summary>
       public int Capacity => mData.Length;
+
+      /// <summary>This property returns the current list count</summary>
       public int Count => mSize;
 
       /// <summary>Indicates whether the stack is empty</summary>
@@ -25,6 +28,8 @@ namespace ClassLibrary {
       #endregion
 
       #region Methods -----------------------------------------------
+      /// <summary>This method checks if the stack is empty 
+      /// and throws exception</summary>
       public void Check () {
          if (mSize == 0)
             throw new InvalidOperationException ("Empty stack");
