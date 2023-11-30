@@ -51,9 +51,12 @@ namespace Test {
       }
 
       [TestMethod]
+      /// <summary>Pushes data into all the test methods</summary>
       public void TestPush () {
-         for (int i = 1; i <= 5; i++) customStack.Push (i);
-         for (int j = 1; j <= 5; j++) inBuiltStack.Push (j);
+         for (int i = 1; i <= 5; i++) {
+            customStack.Push (i);
+            inBuiltStack.Push (i);
+         }
       }
       #endregion
    }
