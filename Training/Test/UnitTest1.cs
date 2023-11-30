@@ -45,8 +45,10 @@ namespace Test {
       [TestMethod]
       /// <summary>Test for enqueue</summary>
       public void TestEnqueue () {
-         for (int i = 1; i <= 5; i++) customQueue.Enqueue (i);
-         for (int j = 1; j <= 5; j++) inBuiltQueue.Enqueue (j);
+         for (int i = 1; i <= 5; i++) {
+            customQueue.Enqueue (i);
+            inBuiltQueue.Enqueue (i);
+         }
       }
 
       [TestMethod]
