@@ -1,4 +1,13 @@
-﻿using Training;
+// ---------------------------------------------------------------------------------------
+// Training ~ A training program for new joinees at Metamation, Batch- July 2023.
+// Copyright (c) Metamation India.
+// ---------------------------------------------------------------------------
+// Test.cs
+// Excutes the custom class Queue<t>.
+// ---------------------------------------------------------------------------------------
+
+using Training;
+
 internal class Program {
    static void Main (string[] args) {
       TQueue<int> queue = new ();
