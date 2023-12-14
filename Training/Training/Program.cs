@@ -11,18 +11,18 @@
 using System.Text;
 
 Console.OutputEncoding = new UnicodeEncoding ();
-int[] sQueenPlace = new int[8];
-List<int[]> sSolution = new ();
+int[] queenPlace = new int[8];
+List<int[]> solution = new ();
 NQueensPlacement (0);
-PrintAllSolution (sSolution);
+PrintAllSolution (solution);
 
 /// <summary>Solves the N-Queens problem using backtracking</summary>
 /// <param name="queenRowPosition">The current row to place queens</param>
 void NQueensPlacement (int queenRowPosition) {
    for (int i = 0; i < 8; i++) {
       if (IsQueenSafe (queenRowPosition, i)) {
-         sQueenPlace[queenRowPosition] = i;
-         if (queenRowPosition == 7) CanonicalSolutions (sQueenPlace.ToArray ());
+         queenPlace[queenRowPosition] = i;
+         if (queenRowPosition == 7) CanonicalSolutions (queenPlace.ToArray ());
          else NQueensPlacement (queenRowPosition + 1);
       }
    }
@@ -34,22 +34,22 @@ void NQueensPlacement (int queenRowPosition) {
 /// <returns>True if it is safe to place the queen, false otherwise</returns>
 bool IsQueenSafe (int row, int column) {
    for (int prevRow = 0; prevRow <= row; prevRow++) {
-      int prevCol = sQueenPlace[prevRow];
-      if (prevCol == column || Math.Abs (prevCol - column) == Math.Abs (prevRow - row)) return false;
+      int prevCol = queenPlace[prevRow];
+      if (prevCol == column || Math.Abs (prevCol - column) == row - prevRow) return false;
    }
    return true;
 }
 
 /// <summary>Displays the solutions on the chessboard</summary>
-/// <param name="sSolution">List of all solution arrays</param>
-void PrintAllSolution (List<int[]> sSolution) {
+/// <param name="solution">List of all solution arrays</param>
+void PrintAllSolution (List<int[]> solution) {
    int count = 1;
-   foreach (int[] sSol in sSolution) {
+   foreach (int[] Sol in solution) {
       Console.CursorLeft = Console.CursorTop = 0;
-      Console.WriteLine ($"Solution: {count} of {sSolution.Count}");
+      Console.WriteLine ($"Solution: {count} of {solution.Count}");
       Console.WriteLine ($"┌────┬────┬────┬────┬────┬────┬────┬────┐");
       for (int i = 0; i < 8; i++) {
-         for (int j = 0; j < 8; j++) Console.Write ($"│ {(j == sSol[i] ? " ♕ " : "   "),-2}");
+         for (int j = 0; j < 8; j++) Console.Write ($"│ {(j == Sol[i] ? " ♕ " : "   "),-2}");
          Console.WriteLine ("│");
          if (i < 7) Console.WriteLine ($"├────┼────┼────┼────┼────┼────┼────┼────┤");
       }
@@ -60,31 +60,30 @@ void PrintAllSolution (List<int[]> sSolution) {
 }
 
 /// <summary>Adds a solution to the list of solutions</summary>
-/// <param name="sSol">Solution to be added</param>
-void CanonicalSolutions (int[] sSol) {
+/// <param name="sol">Solution to be added</param>
+void CanonicalSolutions (int[] sol) {
    for (int i = 0; i <= 3; i++) {
-      sSol = RotateSolution (sSol);
-      if (IsCanonical (sSol)) return;
-      if (IsCanonical (MirrorSolution (sSol))) return;
+      sol = RotateSolution (sol);
+      if (IsCanonical (sol) || IsCanonical (MirrorSolution (sol))) return;
    }
-   sSolution.Add (sSol);
+   solution.Add (sol);
 }
 
 // <summary>Rotates a solution by 90 degrees</summary>
-/// <param name="sSol">The solution to be rotated</param>
+/// <param name="sol">The solution to be rotated</param>
 /// <returns>The rotated solution</returns>
-int[] RotateSolution (int[] sSol) {
+int[] RotateSolution (int[] sol) {
    int[] arr = new int[8];
-   for (int i = 0; i < 8; i++) arr[sSol[i]] = 8 - i - 1;
+   for (int i = 0; i < arr.Length; i++) arr[sol[i]] = 8 - i - 1;
    return arr;
 }
 
 /// <summary>Mirrors a solution</summary>
-/// <param name="sSol">The solution to be mirrored</param>
+/// <param name="sol">The solution to be mirrored</param>
 /// <returns>The mirrored solution</returns>
-int[] MirrorSolution (int[] sSol) => sSol.Reverse ().ToArray ();
+int[] MirrorSolution (int[] sol) => sol.Reverse ().ToArray ();
 
 /// <summary>Checks if a solution is identical to any of the existing solutions</summary>
-/// <param name="sSol">The solution to be checked for similarity</param>
+/// <param name="sol">The solution to be checked for similarity</param>
 /// <returns>True if the solution is identical, false otherwise</returns>
-bool IsCanonical (int[] sSol) => sSolution.Any (s => s.SequenceEqual (sSol));
+bool IsCanonical (int[] sol) => solution.Any (s => s.SequenceEqual (sol));
