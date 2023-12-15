@@ -1,6 +1,16 @@
-﻿using ClassLibrary;
+﻿// ------------------------------------------------------------------------------------------------
+// Training ~ A training program for new joinees at Metamation, Batch- July 2023.
+// Copyright (c) Metamation India.
+// ------------------------------------------------------------------
+// Program.cs
+// Program to implement double.TryParse.
+// ------------------------------------------------------------------------------------------------
+using ClassLibrary;
 
+/// <summary>Contains the Main method to demonstrate the Double.TryParse class</summary>
 internal class Program {
+   #region Methods -----------------------------------------------
+   /// <summary>Entry Point of the program</summary>
    static void Main (string[] args) {
       CustomDouble customDouble = new ();
       string[] inputs = {"-12", "+12", "12", "-+12", "*12","12.3", "12.34", "12.-3", ".14",
@@ -20,4 +30,5 @@ internal class Program {
          Console.ResetColor ();
       }
    }
+   #endregion
 }

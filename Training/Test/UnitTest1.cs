@@ -1,3 +1,11 @@
+// ----------------------------------------------------------------------------------------
+// Training 
+// Copyright (c) Metamation India.
+// ----------------------------------------------------------------------------------------
+// UnitTest1.cs
+// Create a test for testing the Double.TryParse with underlying structure as array using
+// property,methods and private variables
+// --------------------------------------------------------------------------------------------
 using ClassLibrary;
 
 namespace Test {
@@ -5,6 +13,7 @@ namespace Test {
    public class UnitTest1 {
       CustomDouble customDouble = new ();
 
+      #region Test Methods ------------------------------------------
       [TestMethod]
       public void TestParse () {
          double NaN = double.NaN;
@@ -32,5 +41,6 @@ namespace Test {
             Assert.AreEqual (Math.Abs (cases.Value), Math.Abs (results));
          }
       }
+      #endregion
    }
 }

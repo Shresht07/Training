@@ -1,5 +1,17 @@
-﻿namespace ClassLibrary {
+﻿// ------------------------------------------------------------------------------------------------
+// Training ~ A training program for new joinees at Metamation, Batch - July 2023.
+// Copyright (c) Metamation India.
+// ------------------------------------------------------------------
+// ClassLibrary.cs
+// Implement custom double.Parse method that takes a string and returns its double equivalent value.
+// ------------------------------------------------------------------------------------------------
+namespace ClassLibrary {
+   /// <summary>Provides methods for parsing strings into double values</summary>
    public class CustomDouble {
+      #region Public Methods ----------------------------------------
+      /// <summary>Parses the specified string into its double equivalent value</summary>
+      /// <param name="input">The input string to be parsed</param>
+      /// <returns>Returns the double equivalent of the input string</returns>
       public double Parse (string input) {
          input = input.Trim ();
          double result = 0;
@@ -63,5 +75,6 @@
          if (isNegative) result = -result;
          return Math.Round (result, 4);
       }
+      #endregion
    }
 }
