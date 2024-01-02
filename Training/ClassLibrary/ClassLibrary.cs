@@ -13,27 +13,30 @@ namespace ClassLibrary {
       /// <param name="input">The input string to be parsed</param>
       /// <returns>Returns the double equivalent of the input string</returns>
       public double Parse (string input) {
-         input = input.Trim ();
+         input = input.ToLower ().Trim ();
          double result = 0;
          bool isNegative = false;
          int startIndex = 0;
-         double integerPart = 0;
+         int integerPart = 0;
          double fractionalPart = 0;
          bool hasFractionalPart = false;
          double fractionalMultiplier = 0.1;
          bool hasExponent = false;
          int exponent = 0;
          bool isExponentNegative = false;
+         int e = input.IndexOf ('e');
 
-         if ((input.Count (ch => ch == 'e' || ch == 'E') == 1) &&
-             ((input.IndexOf ('e') > 0 && (input[input.IndexOf ('e') - 1] == '+' || input[input.IndexOf ('e') - 1] == '-')) ||
-              (input.IndexOf ('e') < input.Length - 1 && (input[input.IndexOf ('e') + 1] == '+' || input[input.IndexOf ('e') + 1] == '-')))) return double.NaN;
+         if ((input.Count (ch => ch is 'e') is 1) &&
+             e > 0 && (input[e - 1] is '+' or '-'))
+            return double.NaN;
+
+         if (input.Count (op => op is '+') + input.Count (op => op is '-') > 1) return double.NaN;
 
          if (input.StartsWith ('.') || input.EndsWith ('.') ||
              string.IsNullOrWhiteSpace (input) || input.StartsWith ('e') || input.EndsWith ('e'))
             return double.NaN;
 
-         if (input.Length > 0 && (input[0] == '-' || input[0] == '+')) {
+         if (input.Length > 0 && (input[0] is '-' or '+')) {
             isNegative = input[0] == '-';
             startIndex = 1;
          }
@@ -48,17 +51,17 @@ namespace ClassLibrary {
                   fractionalMultiplier *= 0.1;
                }
                if (hasExponent) exponent = exponent * 10 + digit;
-            } else if (c == '.') {
+            } else if (c is '.') {
                if (hasFractionalPart) return double.NaN;
                hasFractionalPart = true;
-            } else if (c == 'e' || c == 'E') {
+            } else if (c is 'e') {
                hasExponent = true;
                if (i + 1 < input.Length) {
                   i++;
-                  if (input[i] == '-') {
+                  if (input[i] is '-') {
                      isExponentNegative = true;
                      i++;
-                  } else if (input[i] == '+') i++;
+                  } else if (input[i] is '+') i++;
 
                   while (i < input.Length && char.IsDigit (input[i])) {
                      exponent = exponent * 10 + (input[i] - '0');
@@ -68,10 +71,8 @@ namespace ClassLibrary {
                break;
             } else return double.NaN;
          }
-
+         result = integerPart + fractionalPart;
          if (hasExponent) result = (integerPart + fractionalPart) * Math.Pow (10, isExponentNegative ? -exponent : exponent);
-         else result = integerPart + fractionalPart;
-
          if (isNegative) result = -result;
          return Math.Round (result, 4);
       }

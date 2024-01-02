@@ -26,7 +26,7 @@ internal class Program {
          Console.ForegroundColor = ConsoleColor.Green;
          Console.Write ($"{input}");
          Console.ForegroundColor = ConsoleColor.Blue;
-         Console.WriteLine ($"\t\t {parsedValue}");
+         Console.WriteLine (input.Length == 8 ? $"\t{parsedValue}" : $"\t\t{parsedValue}");
          Console.ResetColor ();
       }
    }

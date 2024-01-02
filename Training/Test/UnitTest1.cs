@@ -33,12 +33,12 @@ namespace Test {
 
          foreach (var input in inputs) {
             double val = customDouble.Parse (input.Key);
-            Assert.AreEqual (Math.Abs (input.Value), Math.Abs (val));
+            Assert.AreEqual (input.Value, val);
          }
 
          foreach (var cases in NaNCases) {
             double results = customDouble.Parse (cases.Key);
-            Assert.AreEqual (Math.Abs (cases.Value), Math.Abs (results));
+            Assert.AreEqual (cases.Value, results);
          }
       }
       #endregion
