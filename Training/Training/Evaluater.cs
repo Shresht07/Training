@@ -1,14 +1,15 @@
 ﻿namespace Training;
-class EvalException : Exception {
+public class EvalException : Exception {
    public EvalException (string message) : base (message) { }
 }
 
-class Evaluator {
+public class Evaluator {
    public double Evaluate (string text) {
+      Restore ();
       List<Token> tokens = new ();
       var tokenizer = new Tokenizer (this, text);
       for (; ; ) {
-         var token = tokenizer.Next ();
+         var token = tokenizer.Next (tokens);
          if (token is TEnd) break;
          if (token is TError err) throw new EvalException (err.Message);
          tokens.Add (token);
@@ -22,12 +23,13 @@ class Evaluator {
       }
       foreach (var t in tokens) Process (t);
       while (mOperators.Count > 0) ApplyOperator ();
+      if (BasePriority != 0) throw new EvalException ("paranthesis mismatch");
       double f = mOperands.Pop ();
       if (tVariable != null) mVars[tVariable.Name] = f;
       return f;
    }
 
-   public int BasePriority { get; private set; }
+   public int BasePriority { get; set; }
 
    public double GetVariable (string name) {
       if (mVars.TryGetValue (name, out double f)) return f;
@@ -41,7 +43,7 @@ class Evaluator {
             mOperands.Push (num.Value);
             break;
          case TOperator op:
-            while (mOperators.Count > 0 && mOperators.Peek ().Priority > op.Priority)
+            while (mOperands.Count > 0 && mOperators.Count > 0 && mOperators.Peek ().Priority >= op.Priority)
                ApplyOperator ();
             mOperators.Push (op);
             break;
@@ -60,8 +62,16 @@ class Evaluator {
       var f1 = mOperands.Pop ();
       if (op is TOpFunction func) mOperands.Push (func.Evaluate (f1));
       else if (op is TOpArithmetic arith) {
+         if (mOperands.Count is 0) throw new EvalException ("Invalid usage of operands");
          var f2 = mOperands.Pop ();
          mOperands.Push (arith.Evaluate (f2, f1));
-      }
+      } else if (op is TOpUnary un) mOperands.Push (un.Evaluate (f1));
+      else throw new EvalException ("Invalid operator");
+   }
+
+   void Restore () {
+      mOperands.Clear ();
+      mOperators.Clear ();
+      BasePriority = 0;
    }
 }
