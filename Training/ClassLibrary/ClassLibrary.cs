@@ -72,7 +72,7 @@ namespace ClassLibrary {
             } else return double.NaN;
          }
          result = integerPart + fractionalPart;
-         if (hasExponent) result = (integerPart + fractionalPart) * Math.Pow (10, isExponentNegative ? -exponent : exponent);
+         if (hasExponent) result *= Math.Pow (10, isExponentNegative ? -exponent : exponent);
          if (isNegative) result = -result;
          return Math.Round (result, 4);
       }
