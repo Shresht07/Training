@@ -1,4 +1,13 @@
+// ------------------------------------------------------------------------------------------------
+// Training 
+// Copyright (c) Metamation India.
+// ------------------------------------------------------------------------------------------------
+// UnitTest1.cs
+// Test for File name parser
+// ------------------------------------------------------------------------------------------------
 namespace Test {
+   #region TestClass ------------------------------------------------
+   /// <summary>Test class for UnitTest1</summary>
    [TestClass]
    public class UnitTest1 {
       Dictionary<string, bool> sTests = new Dictionary<string, bool>
@@ -22,6 +31,9 @@ namespace Test {
             {"C:\\abc\\def\\r.txt.txt", false},
             {"C:\\work\\r.txt", true}
         };
+
+      #region Methods
+      /// <summary> Test method for UnitTest1</summary>
       [TestMethod]
       public void TestFileNameParser () {
          foreach (var testCase in sTests) {
@@ -29,5 +41,7 @@ namespace Test {
             Assert.AreEqual (testResult, testCase.Value);
          }
       }
+      #endregion
    }
+   #endregion
 }
