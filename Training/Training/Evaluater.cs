@@ -60,13 +60,23 @@ public class Evaluator {
    void ApplyOperator () {
       var op = mOperators.Pop ();
       var f1 = mOperands.Pop ();
-      if (op is TOpFunction func) mOperands.Push (func.Evaluate (f1));
-      else if (op is TOpArithmetic arith) {
-         if (mOperands.Count is 0) throw new EvalException ("Invalid usage of operands");
-         var f2 = mOperands.Pop ();
-         mOperands.Push (arith.Evaluate (f2, f1));
-      } else if (op is TOpUnary un) mOperands.Push (un.Evaluate (f1));
-      else throw new EvalException ("Invalid operator");
+      switch (op) {
+         case TOpFunction func:
+            mOperands.Push (func.Evaluate (f1));
+            break;
+         case TOpArithmetic arith:
+            if (mOperands.Count == 0)
+               throw new EvalException ("Invalid usage of operands");
+            var f2 = mOperands.Pop ();
+            mOperands.Push (arith.Evaluate (f2, f1));
+            break;
+         case TOpUnary un:
+            mOperands.Push (un.Evaluate (f1));
+            break;
+         default:
+            throw new EvalException ("Invalid operator");
+      }
+
    }
 
    void Restore () {
