@@ -20,19 +20,18 @@ public class FileNameParser {
       State currentState = A;
       Action none = () => { };
       Action toDo;
-      string alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       foreach (var ch in input.ToUpper ().Trim () + "|") {
          (currentState, toDo) = (currentState, ch) switch {
             (A, >= 'A' and <= 'Z') => (B, () => driveLetter += ch),
             (B, ':') => (C, none),
             (C, '\\') => (D, none),
-            (D, _) when alphabets.Contains (ch) => (D, () => folder += ch),
+            (D, >= 'A' and <= 'Z') => (D, () => folder += ch),
             (D, '\\') => (E, none),
-            (E, _) when alphabets.Contains (ch) => (E, () => temp += ch),
+            (E, >= 'A' and <= 'Z') => (E, () => temp += ch),
             (E, '\\') => (F, () => { folder += '\\' + temp; temp = string.Empty; }),
-            (D or F, _) when alphabets.Contains (ch) => (F, () => fileName += ch),
+            (D or F, >= 'A' and <= 'Z') => (F, () => fileName += ch),
             (E or F, '.') => (G, () => fileName += temp),
-            (G, _) when alphabets.Contains (ch) => (G, () => fileExtn += ch),
+            (G, >= 'A' and <= 'Z') => (G, () => fileExtn += ch),
             (G, '|') => (H, none),
             _ => (Z, none)
          };
