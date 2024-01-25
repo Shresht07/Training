@@ -8,4 +8,8 @@
 	  <OutDir>..\bin</OutDir>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
