@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary {
+namespace ClassLibrary {
    public class TDoubleEndedQueue<T> {
       public TDoubleEndedQueue () {
          const int mDefaultCapacity = 4;
@@ -78,21 +78,29 @@
 
       private bool IsFull => mSize == mData.Length;
 
-      private void Resize () {
-         int newCapacity = mData.Length * 2;
-         T[] newArray = new T[newCapacity];
-
+      private void CopyToNewArray (T[] newArray) {
          int index = 0;
          while (index < mSize) {
             newArray[index] = mData[mFrontIndex];
             index++;
             mFrontIndex = (mFrontIndex + 1) % mData.Length;
          }
+      }
 
+      private void ResetIndicesAndAssignNewArray (T[] newArray) {
          mFrontIndex = 0;
          mRearIndex = mSize - 1;
          mData = newArray;
       }
+
+      private void Resize () {
+         int newCapacity = mData.Length * 2;
+         T[] newArray = new T[newCapacity];
+
+         CopyToNewArray (newArray);
+         ResetIndicesAndAssignNewArray (newArray);
+      }
+
 
       void Check (bool condition) {
          if (condition == IsEmpty && IsEmpty) throw new InvalidOperationException ("Queue is empty.");
